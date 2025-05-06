@@ -5,27 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main page</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+         .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 700px;
+            margin: auto;
+        }
+        .card {
+            width: 200px;
+            height: 100px;
+            margin-top: 10px;
+        }
+        .bg-color-red {
+            background-color: red;
+        }
+        .bg-color-green {
+            background-color: rgb(72, 206, 72);
+        }
+        .bg-color-blue {
+            background-color: blue;
+        }
+
+    </style>
+
 </head>
 <body>
     <div class="page">
         <div class="left-panel">
             <div class="logo"></div>
-            <div class="left-menu"></div>
+            <div class="left-menu">
+                <div class="menu-link"><a href="logout.html">Home</a></div>
+                <div class="menu-link"><a href="logout.html">Demos</a></div>
+                <div class="menu-link"><a href="logout.html">Logout</a></div>
+            </div>
         </div>
 
         <div class="right-panel">
-            <div class="top-menu-bar"></div>
-            <div class="content">
-
-                <div>
-                    <h1>This is heading 1</h1>
-                    <h2>This is heading 2</h2>
-                    <h3>This is heading 3</h3>
-                    <h4>This is heading 4</h4>
-                    <h5>This is heading 5</h5>
-                    <h6>This is heading 6</h6>
+            <div class="top-menu-bar">
+                <a class="menu-link" href="logout.html">Home</a>
+                <a class="menu-link" href="logout.html">Demos</a>
+                <a class="menu-link" href="logout.html">Logout</a>
             </div>
-        </div>
+            <div class="content">
+                <div class="card-container">
+                    <div class="card bg-color-red">Hello World!</div>
+                    <div class="card bg-color-green">Hello World!</div>
+                    <div class="card bg-color-blue">Hello World!</div>
+                    <div class="card bg-color-red">Hello World!</div>
+                    <div class="card bg-color-green">Hello World!</div>
+                    <div class="card bg-color-blue">Hello World!</div>
+                </div>
+
+            </div>
     </div>
+
+    <script>
+        alert('Hello from JavaScript!')
+    </script>
+
 </body>
 </html>
