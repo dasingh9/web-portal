@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Products</title>
+    <link rel="stylesheet" href="table.css">
+</head>
+
+<body>
+
+    <table id="productsTable">
+        <caption>Product Inventory</caption>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Is Active</th>
+                <th style="width: 80px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script type="module">
+        import { getAllProducts } from "./products-service.js";
+
+        const products = getAllProducts();
+        //console.log(`Number of products: ${products.length}`);
+        const tbody = document.querySelector("#productsTable tbody");
+        for (let product of products) {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${product.name}</td>
+                <td>${product.category}</td>
+                <td>${product.price}</td>
+                <td>${product.isActive ? "✅" : "❌"}</td>
+                <td>
+                    <span>
+                        <button style="background-color: white; border: 1px solid #ccc; padding: 3px 10px;">✎</button>
+                    </span>
+                    <span>
+                        <button style="background-color: white; border: 1px solid #ccc; padding: 3px 10px;">❌</button>
+                    </span>
+                </td>
+            `
+            tbody.appendChild(row);
+        }
+    </script>
+</body>
+
+</html>

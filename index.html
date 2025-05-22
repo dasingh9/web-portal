@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,63 +8,70 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-         .card-container {
+        .card-container {
             display: flex;
             flex-wrap: wrap;
             max-width: 700px;
             margin: auto;
         }
+
         .card {
             width: 200px;
             height: 100px;
             margin-top: 10px;
         }
+
         .bg-color-red {
             background-color: red;
         }
+
         .bg-color-green {
             background-color: rgb(72, 206, 72);
         }
+
         .bg-color-blue {
             background-color: blue;
         }
 
+        #products-container iframe {
+            width: 100%;
+            height: 80vh;
+            border: none; /* Removes the 3D border */
+            outline: none; /* Removes any focus outline */
+            box-shadow: none; /* Removes any shadow effect */
+        }
     </style>
 
 </head>
+
 <body>
     <div class="page">
         <div class="left-panel">
             <div class="logo"></div>
             <div class="left-menu">
-                <div class="menu-link"><a href="logout.html">Home</a></div>
-                <div class="menu-link"><a href="logout.html">Demos</a></div>
-                <div class="menu-link"><a href="logout.html">Logout</a></div>
+                <div class="menu-link"><a href="/">Home</a></div>
+                <div class="menu-link"><a href="products/">Products</a></div>
+                <div class="menu-link"><a href="cleaning-services.html">Cleaning Services</a></div>
             </div>
         </div>
 
         <div class="right-panel">
             <div class="top-menu-bar">
-                <a class="menu-link" href="logout.html">Home</a>
-                <a class="menu-link" href="logout.html">Demos</a>
+                <a class="menu-link" href="/">Home</a>
+                <a class="menu-link" href="products/">Products</a>
+                <a class="menu-link" href="cleaning-services.html">Cleaning Services</a>
                 <a class="menu-link" href="logout.html">Logout</a>
             </div>
             <div class="content">
                 <div class="card-container">
-                    <div class="card bg-color-red">Hello World!</div>
-                    <div class="card bg-color-green">Hello World!</div>
-                    <div class="card bg-color-blue">Hello World!</div>
-                    <div class="card bg-color-red">Hello World!</div>
-                    <div class="card bg-color-green">Hello World!</div>
-                    <div class="card bg-color-blue">Hello World!</div>
                 </div>
-
             </div>
-    </div>
+        </div>
 
-    <script>
-        alert('Hello from JavaScript!')
-    </script>
+        <script>
+           
+        </script>
 
 </body>
+
 </html>
