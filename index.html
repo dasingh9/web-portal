@@ -33,9 +33,9 @@
             background-color: blue;
         }
 
-        #products-container iframe {
+        #iframe-container iframe {
             width: 100%;
-            height: 80vh;
+            height: 90vh;
             border: none;
             /* Removes the 3D border */
             outline: none;
@@ -54,6 +54,7 @@
             <div class="left-menu">
                 <div class="menu-link"><a href="/">Home</a></div>
                 <div class="menu-link"><a href="javascript:changeIframeUrl('products/index.html')">Products</a></div>
+                <div class="menu-link"><a href="javascript:changeIframeUrl('html-demos/learn-html.html')">Learn HTML</a></div>
                 <div class="menu-link"><a href="javascript:changeIframeUrl('html-demos/meta-tags.html')">HTML Meta Tags</a></div>
                 <div class="menu-link"><a href="javascript:changeIframeUrl('categories/')">Categories</a></div>
                 <div class="menu-link"><a href="javascript:changeIframeUrl('html-demos/register.html')">Register</a></div>
@@ -64,13 +65,14 @@
             <div class="top-menu-bar">
                 <a class="menu-link" href="/">Home</a>
                 <a class="menu-link" href="javascript:changeIframeUrl('products/index.html')">Products</a>
+                <a class="menu-link" href="javascript:changeIframeUrl('html-demos/learn-html.html')">Learn HTML</a>
                 <a class="menu-link" href="javascript:changeIframeUrl('categories/')">Html Meta Tags</a>
                 <a class="menu-link" href="javascript:changeIframeUrl('html-demos/register.html')">Logout</a>
             </div>
             <div class="content">
 
-                <div id="products-container">
-                    <iframe id="contentIframe" style="width: 1200px; height: 700px;" frameborder="0"></iframe>
+                <div id="iframe-container">
+                    <iframe id="contentIframe"></iframe>
                 </div>
 
             </div>
