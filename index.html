@@ -36,9 +36,12 @@
         #products-container iframe {
             width: 100%;
             height: 80vh;
-            border: none; /* Removes the 3D border */
-            outline: none; /* Removes any focus outline */
-            box-shadow: none; /* Removes any shadow effect */
+            border: none;
+            /* Removes the 3D border */
+            outline: none;
+            /* Removes any focus outline */
+            box-shadow: none;
+            /* Removes any shadow effect */
         }
     </style>
 
@@ -50,26 +53,34 @@
             <div class="logo"></div>
             <div class="left-menu">
                 <div class="menu-link"><a href="/">Home</a></div>
-                <div class="menu-link"><a href="products/">Products</a></div>
-                <div class="menu-link"><a href="cleaning-services.html">Cleaning Services</a></div>
+                <div class="menu-link"><a href="javascript:changeIframeUrl('products/index.html')">Products</a></div>
+                <div class="menu-link"><a href="javascript:changeIframeUrl('html-demos/meta-tags.html')">HTML Meta Tags</a></div>
+                <div class="menu-link"><a href="javascript:changeIframeUrl('categories/')">Categories</a></div>
+                <div class="menu-link"><a href="javascript:changeIframeUrl('html-demos/register.html')">Register</a></div>
             </div>
         </div>
 
         <div class="right-panel">
             <div class="top-menu-bar">
                 <a class="menu-link" href="/">Home</a>
-                <a class="menu-link" href="products/">Products</a>
-                <a class="menu-link" href="cleaning-services.html">Cleaning Services</a>
-                <a class="menu-link" href="logout.html">Logout</a>
+                <a class="menu-link" href="javascript:changeIframeUrl('products/index.html')">Products</a>
+                <a class="menu-link" href="javascript:changeIframeUrl('categories/')">Html Meta Tags</a>
+                <a class="menu-link" href="javascript:changeIframeUrl('html-demos/register.html')">Logout</a>
             </div>
             <div class="content">
-                <div class="card-container">
+
+                <div id="products-container">
+                    <iframe id="contentIframe" style="width: 1200px; height: 700px;" frameborder="0"></iframe>
                 </div>
+
             </div>
         </div>
 
         <script>
-           
+            function changeIframeUrl(url) {
+                const iframe = document.getElementById("contentIframe");
+                iframe.src = url;
+            }
         </script>
 
 </body>

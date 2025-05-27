@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Donate to your city</h1>
+    <form action='processMyForm.asp' method='post'>
+        Your name <input type='text'>
+        <br><br>
+        Password <input type='password'>
+        <br><br>
+        DOB <input type='date'>
+        <br><br>
+        Donate Cash <input type='number'>
+        <br><br>
+        Donate EVs
+        <select>
+            <option>1</option>
+            <option>10</option>
+            <option>100</option>
+            <option>1000</option>
+            <option>10000</option>
+            <option>9999999</option>
+        </select>
+        <br><br>
+        Range <input id="rangeElement" min="1950" max="2025" type='range' onchange="printRange()">
+        <br><br>
+        <input type='submit' value="Donate">
+    </form>
+
+    <div id="selectedRange"></div>
+
+    <script>
+        function printRange() {
+            document.getElementById("selectedRange").innerText = document.getElementById("rangeElement").value;
+        }
+    </script>
+
+</body>
+
+</html>
