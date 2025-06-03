@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive</title>
+
+    <style>
+        .responsive {
+            background-color: aqua;
+            font-size: 3rem;
+            border: 2px solid red;
+        }
+
+        .responsive::before {
+            content: "Default Content";
+        }
+
+        /* Small (sm): ≥576px */
+        @media (min-width: 576px) and (max-width: 767.99px) {
+
+            /* Your styles for small devices */
+            .responsive {
+                background-color: pink;
+            }
+
+            .responsive::before {
+                content: "Small device";
+            }
+        }
+
+        /* Medium (md): ≥768px */
+        @media (min-width: 768px) and (max-width: 991.99px) {
+
+            /* Your styles for medium devices */
+            .responsive {
+                background-color: blue;
+                color: yellow;
+            }
+
+            .responsive::before {
+                content: "Medium device";
+            }
+        }
+
+        /* Large (lg): ≥992px */
+        @media (min-width: 992px) and (max-width: 1199.99px) {
+
+            /* Your styles for large devices */
+            .responsive {
+                background-color: yellow;
+            }
+
+            .responsive::before {
+                content: "Large device";
+            }
+        }
+
+        /* Extra Large (xl): ≥1200px */
+        @media (min-width: 1200px) and (max-width: 1399.99px) {
+
+            /* Your styles for extra-large devices */
+            .responsive {
+                background-color: green;
+            }
+
+            .responsive::before {
+                content: "X-Large device";
+            }
+        }
+
+        /* Extra Extra Large (xxl): ≥1400px */
+        @media (min-width: 1400px) {
+
+            /* Your styles for extra-extra-large devices */
+            .responsive {
+                background-color: blueviolet;
+                font-size: 5rem;
+            }
+
+            .responsive::before {
+                content: "XXL device";
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Resize your browser window to test the responsive div below:</h3>
+    <div class="responsive"></div>
+
+</body>
+
+</html>

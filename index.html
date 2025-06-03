@@ -23,6 +23,9 @@
 </head>
 
 <body>
+
+    <button onclick="toggleLeftPanel()" class="toggle-button">☰</button>
+
     <div class="page">
         <div class="left-panel">
             <div class="logo">
@@ -35,6 +38,7 @@
                     <li><a class="menu-products" title="Products" href="javascript:changeIframeUrl('products/index.html')">Products</a></li>
                     <li><a href="javascript:changeIframeUrl('html-demos/learn-html.html')">Learn HTML</a></li>
                     <li><a href="javascript:changeIframeUrl('html-demos/meta-tags.html')">HTML Meta Tags</a></li>
+                    <li><a href="javascript:changeIframeUrl('html-demos/responsive.html')">Media Queries</a></li>
                     <li><a href="javascript:changeIframeUrl('categories/')">Categories</a></li>
                     <li><a href="javascript:changeIframeUrl('html-demos/register.html')">Register</a></li>
                 </ul>
@@ -60,6 +64,27 @@
                 const iframe = document.getElementById("contentIframe");
                 iframe.src = url;
             }
+        </script>
+
+        <script>
+            const leftPanel = document.querySelector(".left-panel");
+
+            function toggleLeftPanel() {
+                leftPanel.classList.toggle("collapse");
+            }
+
+            function handleResize() {
+                if(window.innerWidth <=768) {
+                    leftPanel.classList.add("collapse");
+                }
+                else {
+                    leftPanel.classList.remove("collapse");
+                }
+            }
+
+            window.addEventListener('load', handleResize);
+            window.addEventListener('resize', handleResize);
+
         </script>
 
 </body>

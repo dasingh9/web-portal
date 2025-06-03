@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elements Positions</title>
+    <style>
+        body {
+            font-size: 2rem;
+        }
+
+        .fixed1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: blueviolet;
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .fixed2 {
+            position: fixed;
+            /*top: calc(50% - 60px);
+            left: calc(50% - 60px);*/
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 11;
+            width: 400px;
+            height: 150px;
+            background-color: #ccc;
+            text-align: center;
+        }
+
+        .fixed3 {
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            z-index: 9;
+            width: 100%;
+            height: 100px;
+            background-color: red;
+            text-align: center;
+        }
+
+        .absolute1 {
+            position: absolute;
+            top: 150px;
+            left: 150px;
+            z-index: 10;
+            width: 400px;
+            height: 90px;
+            background-color: yellow;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="fixed1">fixed1 <br/> (top:0, left:0)</div>
+    <div class="absolute1">absolute1 <br/> (top:150, left:150)</div>
+    <div class="fixed2">fixed2 <br/> (top:50%, left:50%) & translate to -50%</div>
+    <div class="fixed3">fixed3 <br/> (bottom:0, left:0)</div>
+
+    <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, metus sed posuere fermentum, metus
+            erat tempus purus, at vulputate nisi nulla id arcu. Sed quis est blandit, malesuada nulla vel, ultrices ex.
+        </p>
+
+        <p>Curabitur accumsan ligula vel ex malesuada, nec faucibus purus vulputate. Duis nec turpis non erat imperdiet
+            blandit. Maecenas eu massa leo. In nec augue a tellus lacinia hendrerit a at sapien.</p>
+
+        <p>Nam convallis felis ut sapien suscipit, sed scelerisque metus lacinia. Vivamus tristique quam a nisi
+            efficitur, vitae tincidunt nulla dapibus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas.</p>
+
+        <p>Fusce vitae sodales nibh, sed ullamcorper lorem. Morbi vestibulum felis in suscipit blandit. Suspendisse
+            lobortis mattis libero at fermentum. Etiam in augue nec elit suscipit tempor.</p>
+
+        <p>Aliquam erat volutpat. Integer ut nunc vitae lectus finibus congue non at purus. Sed eu orci nec ligula porta
+            vehicula. Vestibulum nec enim neque. Pellentesque imperdiet velit non arcu elementum, sit amet tincidunt
+            velit facilisis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, metus sed posuere fermentum, metus
+            erat tempus purus, at vulputate nisi nulla id arcu. Sed quis est blandit, malesuada nulla vel, ultrices ex.
+        </p>
+
+        <p>Curabitur accumsan ligula vel ex malesuada, nec faucibus purus vulputate. Duis nec turpis non erat imperdiet
+            blandit. Maecenas eu massa leo. In nec augue a tellus lacinia hendrerit a at sapien.</p>
+
+        <p>Nam convallis felis ut sapien suscipit, sed scelerisque metus lacinia. Vivamus tristique quam a nisi
+            efficitur, vitae tincidunt nulla dapibus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas.</p>
+
+        <p>Fusce vitae sodales nibh, sed ullamcorper lorem. Morbi vestibulum felis in suscipit blandit. Suspendisse
+            lobortis mattis libero at fermentum. Etiam in augue nec elit suscipit tempor.</p>
+
+        <p>Aliquam erat volutpat. Integer ut nunc vitae lectus finibus congue non at purus. Sed eu orci nec ligula porta
+            vehicula. Vestibulum nec enim neque. Pellentesque imperdiet velit non arcu elementum, sit amet tincidunt
+            velit facilisis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, metus sed posuere fermentum, metus
+            erat tempus purus, at vulputate nisi nulla id arcu. Sed quis est blandit, malesuada nulla vel, ultrices ex.
+        </p>
+
+        <p>Curabitur accumsan ligula vel ex malesuada, nec faucibus purus vulputate. Duis nec turpis non erat imperdiet
+            blandit. Maecenas eu massa leo. In nec augue a tellus lacinia hendrerit a at sapien.</p>
+
+        <p>Nam convallis felis ut sapien suscipit, sed scelerisque metus lacinia. Vivamus tristique quam a nisi
+            efficitur, vitae tincidunt nulla dapibus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas.</p>
+
+        <p>Fusce vitae sodales nibh, sed ullamcorper lorem. Morbi vestibulum felis in suscipit blandit. Suspendisse
+            lobortis mattis libero at fermentum. Etiam in augue nec elit suscipit tempor.</p>
+
+        <p>Aliquam erat volutpat. Integer ut nunc vitae lectus finibus congue non at purus. Sed eu orci nec ligula porta
+            vehicula. Vestibulum nec enim neque. Pellentesque imperdiet velit non arcu elementum, sit amet tincidunt
+            velit facilisis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, metus sed posuere fermentum, metus
+            erat tempus purus, at vulputate nisi nulla id arcu. Sed quis est blandit, malesuada nulla vel, ultrices ex.
+        </p>
+
+        <p>Curabitur accumsan ligula vel ex malesuada, nec faucibus purus vulputate. Duis nec turpis non erat imperdiet
+            blandit. Maecenas eu massa leo. In nec augue a tellus lacinia hendrerit a at sapien.</p>
+
+        <p>Nam convallis felis ut sapien suscipit, sed scelerisque metus lacinia. Vivamus tristique quam a nisi
+            efficitur, vitae tincidunt nulla dapibus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas.</p>
+
+        <p>Fusce vitae sodales nibh, sed ullamcorper lorem. Morbi vestibulum felis in suscipit blandit. Suspendisse
+            lobortis mattis libero at fermentum. Etiam in augue nec elit suscipit tempor.</p>
+
+        <p>Aliquam erat volutpat. Integer ut nunc vitae lectus finibus congue non at purus. Sed eu orci nec ligula porta
+            vehicula. Vestibulum nec enim neque. Pellentesque imperdiet velit non arcu elementum, sit amet tincidunt
+            velit facilisis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, metus sed posuere fermentum, metus
+            erat tempus purus, at vulputate nisi nulla id arcu. Sed quis est blandit, malesuada nulla vel, ultrices ex.
+        </p>
+
+        <p>Curabitur accumsan ligula vel ex malesuada, nec faucibus purus vulputate. Duis nec turpis non erat imperdiet
+            blandit. Maecenas eu massa leo. In nec augue a tellus lacinia hendrerit a at sapien.</p>
+
+        <p>Nam convallis felis ut sapien suscipit, sed scelerisque metus lacinia. Vivamus tristique quam a nisi
+            efficitur, vitae tincidunt nulla dapibus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas.</p>
+
+        <p>Fusce vitae sodales nibh, sed ullamcorper lorem. Morbi vestibulum felis in suscipit blandit. Suspendisse
+            lobortis mattis libero at fermentum. Etiam in augue nec elit suscipit tempor.</p>
+
+        <p>Aliquam erat volutpat. Integer ut nunc vitae lectus finibus congue non at purus. Sed eu orci nec ligula porta
+            vehicula. Vestibulum nec enim neque. Pellentesque imperdiet velit non arcu elementum, sit amet tincidunt
+            velit facilisis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, metus sed posuere fermentum, metus
+            erat tempus purus, at vulputate nisi nulla id arcu. Sed quis est blandit, malesuada nulla vel, ultrices ex.
+        </p>
+
+        <p>Curabitur accumsan ligula vel ex malesuada, nec faucibus purus vulputate. Duis nec turpis non erat imperdiet
+            blandit. Maecenas eu massa leo. In nec augue a tellus lacinia hendrerit a at sapien.</p>
+
+        <p>Nam convallis felis ut sapien suscipit, sed scelerisque metus lacinia. Vivamus tristique quam a nisi
+            efficitur, vitae tincidunt nulla dapibus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas.</p>
+
+        <p>Fusce vitae sodales nibh, sed ullamcorper lorem. Morbi vestibulum felis in suscipit blandit. Suspendisse
+            lobortis mattis libero at fermentum. Etiam in augue nec elit suscipit tempor.</p>
+
+        <p>Aliquam erat volutpat. Integer ut nunc vitae lectus finibus congue non at purus. Sed eu orci nec ligula porta
+            vehicula. Vestibulum nec enim neque. Pellentesque imperdiet velit non arcu elementum, sit amet tincidunt
+            velit facilisis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, metus sed posuere fermentum, metus
+            erat tempus purus, at vulputate nisi nulla id arcu. Sed quis est blandit, malesuada nulla vel, ultrices ex.
+        </p>
+
+        <p>Curabitur accumsan ligula vel ex malesuada, nec faucibus purus vulputate. Duis nec turpis non erat imperdiet
+            blandit. Maecenas eu massa leo. In nec augue a tellus lacinia hendrerit a at sapien.</p>
+
+        <p>Nam convallis felis ut sapien suscipit, sed scelerisque metus lacinia. Vivamus tristique quam a nisi
+            efficitur, vitae tincidunt nulla dapibus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas.</p>
+
+        <p>Fusce vitae sodales nibh, sed ullamcorper lorem. Morbi vestibulum felis in suscipit blandit. Suspendisse
+            lobortis mattis libero at fermentum. Etiam in augue nec elit suscipit tempor.</p>
+
+        <p>Aliquam erat volutpat. Integer ut nunc vitae lectus finibus congue non at purus. Sed eu orci nec ligula porta
+            vehicula. Vestibulum nec enim neque. Pellentesque imperdiet velit non arcu elementum, sit amet tincidunt
+            velit facilisis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, metus sed posuere fermentum, metus
+            erat tempus purus, at vulputate nisi nulla id arcu. Sed quis est blandit, malesuada nulla vel, ultrices ex.
+        </p>
+
+        <p>Curabitur accumsan ligula vel ex malesuada, nec faucibus purus vulputate. Duis nec turpis non erat imperdiet
+            blandit. Maecenas eu massa leo. In nec augue a tellus lacinia hendrerit a at sapien.</p>
+
+        <p>Nam convallis felis ut sapien suscipit, sed scelerisque metus lacinia. Vivamus tristique quam a nisi
+            efficitur, vitae tincidunt nulla dapibus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas.</p>
+
+        <p>Fusce vitae sodales nibh, sed ullamcorper lorem. Morbi vestibulum felis in suscipit blandit. Suspendisse
+            lobortis mattis libero at fermentum. Etiam in augue nec elit suscipit tempor.</p>
+
+        <p>Aliquam erat volutpat. Integer ut nunc vitae lectus finibus congue non at purus. Sed eu orci nec ligula porta
+            vehicula. Vestibulum nec enim neque. Pellentesque imperdiet velit non arcu elementum, sit amet tincidunt
+            velit facilisis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, metus sed posuere fermentum, metus
+            erat tempus purus, at vulputate nisi nulla id arcu. Sed quis est blandit, malesuada nulla vel, ultrices ex.
+        </p>
+
+        <p>Curabitur accumsan ligula vel ex malesuada, nec faucibus purus vulputate. Duis nec turpis non erat imperdiet
+            blandit. Maecenas eu massa leo. In nec augue a tellus lacinia hendrerit a at sapien.</p>
+
+        <p>Nam convallis felis ut sapien suscipit, sed scelerisque metus lacinia. Vivamus tristique quam a nisi
+            efficitur, vitae tincidunt nulla dapibus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas.</p>
+
+        <p>Fusce vitae sodales nibh, sed ullamcorper lorem. Morbi vestibulum felis in suscipit blandit. Suspendisse
+            lobortis mattis libero at fermentum. Etiam in augue nec elit suscipit tempor.</p>
+
+        <p>Aliquam erat volutpat. Integer ut nunc vitae lectus finibus congue non at purus. Sed eu orci nec ligula porta
+            vehicula. Vestibulum nec enim neque. Pellentesque imperdiet velit non arcu elementum, sit amet tincidunt
+            velit facilisis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, metus sed posuere fermentum, metus
+            erat tempus purus, at vulputate nisi nulla id arcu. Sed quis est blandit, malesuada nulla vel, ultrices ex.
+        </p>
+
+        <p>Curabitur accumsan ligula vel ex malesuada, nec faucibus purus vulputate. Duis nec turpis non erat imperdiet
+            blandit. Maecenas eu massa leo. In nec augue a tellus lacinia hendrerit a at sapien.</p>
+
+        <p>Nam convallis felis ut sapien suscipit, sed scelerisque metus lacinia. Vivamus tristique quam a nisi
+            efficitur, vitae tincidunt nulla dapibus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas.</p>
+
+        <p>Fusce vitae sodales nibh, sed ullamcorper lorem. Morbi vestibulum felis in suscipit blandit. Suspendisse
+            lobortis mattis libero at fermentum. Etiam in augue nec elit suscipit tempor.</p>
+
+        <p>Aliquam erat volutpat. Integer ut nunc vitae lectus finibus congue non at purus. Sed eu orci nec ligula porta
+            vehicula. Vestibulum nec enim neque. Pellentesque imperdiet velit non arcu elementum, sit amet tincidunt
+            velit facilisis.</p>
+
+    </div>
+
+</body>
+
+</html>
