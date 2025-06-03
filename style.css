@@ -56,18 +56,39 @@ body {
   color: white;
 }
 
+.left-menu li.menu-home a::before {
+  content: '🏠 ';
+}
+
+.left-menu li.menu-products a::before {
+  content: '📦 ';
+}
+
+.left-menu li a[href="Products Menu"]::before {
+  content: '📦 ';
+}
+
 .left-menu li a::before {
   content: '⚙️ ';
 }
 
+.left-menu li.menu-home a {
+  color: aqua;
+}
+
+.left-menu li.menu-home a:hover {
+  color: red;
+}
+
+
 .left-menu li a {
   text-decoration: none;     /* Remove underline */
-  color: white;               /* Set text color */
+  color: white!important;  /* Overrides the text color */
   display: block;            /* Make the whole list item clickable */
 }
 
-.left-menu a:hover {
-  color: yellow; /* Highlight on hover */
+.left-menu li a:hover {
+  color: yellow!important; /* Highlight on hover */
 }
 
 
@@ -137,7 +158,8 @@ body {
     display: block;
   }
 
-
+  /* Functional CSS */
+  
   .success {
     color: #28a745;
   }
@@ -145,3 +167,11 @@ body {
   .error {
     color: red;
   }
+
+  .m-5 {
+    margin:5px;
+  }
+  .m-20 {
+    margin:20px;
+  }
+

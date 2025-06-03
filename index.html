@@ -31,8 +31,8 @@
             </div>
             <nav class="left-menu" aria-label="Main navigation">
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="javascript:changeIframeUrl('products/index.html')">Products</a></li>
+                    <li class="menu-home"><a href="/">Home</a></li>
+                    <li><a class="menu-products" title="Products" href="javascript:changeIframeUrl('products/index.html')">Products</a></li>
                     <li><a href="javascript:changeIframeUrl('html-demos/learn-html.html')">Learn HTML</a></li>
                     <li><a href="javascript:changeIframeUrl('html-demos/meta-tags.html')">HTML Meta Tags</a></li>
                     <li><a href="javascript:changeIframeUrl('categories/')">Categories</a></li>
@@ -44,13 +44,10 @@
         <div class="right-panel">
             <div class="top-menu-bar">
                 <a class="menu-link" href="/">Home</a>
-                <a class="menu-link" href="javascript:changeIframeUrl('products/index.html')">Products</a>
-                <a class="menu-link" href="javascript:changeIframeUrl('html-demos/learn-html.html')">Learn HTML</a>
-                <a class="menu-link" href="javascript:changeIframeUrl('categories/')">Html Meta Tags</a>
                 <a class="menu-link" href="javascript:changeIframeUrl('html-demos/register.html')">Logout</a>
             </div>
             <div class="content">
-
+                
                 <div id="iframe-container">
                     <iframe id="contentIframe"></iframe>
                 </div>
