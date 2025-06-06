@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        #iframe-container iframe {
+            width: 100%;
+            height: 90vh;
+            border: none;
+            /* Removes the 3D border */
+            outline: none;
+            /* Removes any focus outline */
+            box-shadow: none;
+            /* Removes any shadow effect */
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <button onclick="toggleLeftPanel()" class="toggle-button">☰</button>
+
+    <div class="page">
+        <div class="left-panel">
+            <div class="logo">
+                <span class="my-logo-icon"></span>
+                <span class="logo-text">&lt;Web 2025 /&gt;</span>
+            </div>
+            <nav class="left-menu" aria-label="Main navigation">
+                <ul>
+                    <li class="menu-home"><a href="/">Home</a></li>
+                    <li><a class="menu-products" title="Products" href="javascript:changeIframeUrl('products/index.html')">Products</a></li>
+                    <li><a href="javascript:changeIframeUrl('html-demos/learn-html.html')">Learn HTML</a></li>
+                    <li><a href="javascript:changeIframeUrl('html-demos/meta-tags.html')">HTML Meta Tags</a></li>
+                    <li><a href="javascript:changeIframeUrl('html-demos/responsive.html')">Media Queries</a></li>
+                    <li><a href="javascript:changeIframeUrl('categories/')">Categories</a></li>
+                    <li><a href="javascript:changeIframeUrl('html-demos/register.html')">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="right-panel">
+            <div class="top-menu-bar">
+                <a class="menu-link" href="/">Home</a>
+                <a class="menu-link" href="javascript:changeIframeUrl('html-demos/register.html')">Logout</a>
+            </div>
+            <div class="content">
+                
+                <div id="iframe-container">
+                    <iframe id="contentIframe"></iframe>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            function changeIframeUrl(url) {
+                const iframe = document.getElementById("contentIframe");
+                iframe.src = url;
+            }
+        </script>
+
+        <script>
+            const leftPanel = document.querySelector(".left-panel");
+
+            function toggleLeftPanel() {
+                leftPanel.classList.toggle("collapse");
+            }
+
+            function handleResize() {
+                if(window.innerWidth <=768) {
+                    leftPanel.classList.add("collapse");
+                }
+                else {
+                    leftPanel.classList.remove("collapse");
+                }
+            }
+
+            window.addEventListener('load', handleResize);
+            window.addEventListener('resize', handleResize);
+
+        </script>
+
+</body>
+
+</html>
