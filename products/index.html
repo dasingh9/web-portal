@@ -18,6 +18,7 @@
 
         function showProducts(products) {
             const tbody = document.querySelector("#productsTable tbody");
+            tbody.innerHTML = "";
             for (let product of products) {
                 const row = document.createElement("tr");
                 row.innerHTML = `
@@ -38,9 +39,15 @@
             }
         }
 
+        function compareProductsByName(name1, name2) {
+            const regex = new RegExp(name1, 'i'); // 'i' for case-insensitive
+            return regex.test(name2);
+        }
+
         function filterProducts() {
             const productName = document.getElementById("productName").value;
-            const filteredProducts = allProducts.filter(p => p.name.includes(productName));
+            const filteredProducts = allProducts.filter(p => p.name.toLowerCase().includes(productName.toLowerCase()));
+            //const filteredProducts = allProducts.filter(p => compareProductsByName(productName, p.name));
             showProducts(filteredProducts);
         }
 
