@@ -5,16 +5,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of Products</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="table.css">
     <style>
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
         .filters {
             margin: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        dialog {
+            border: none;
+            border-radius: 8px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+        }
+    
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.4);
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        label {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+    
+        input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+    
+        input[readonly] {
+            background-color: #f5f5f5;
+        }
+    
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+    
+        #editProductDialog button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+    
+        button#btnSaveProduct {
+            background-color: #007bff;
+            color: white;
+        }
+    
+        button#btnCloseEditDialog {
+            background-color: #ccc;
+            color: black;
+        }
+    
+        .message {
+            margin-top: 1rem;
+            color: green;
+            font-weight: bold;
         }
     </style>
 
     <script type="module">
         import { getAllProducts } from "./products-service.js";
         const allProducts = getAllProducts();
+
+        function showEditDialog(product_id) {
+            //console.log(product_id);
+            const product = allProducts.find(product=>product.product_id == product_id);
+            console.log(JSON.stringify(product));
+
+            document.getElementById("product_id").value = product.product_id;
+            document.getElementById("name").value = product.name;
+            document.getElementById("category").value = product.category;
+            document.getElementById("price").value = product.price;
+
+            document.getElementById("editProductDialog").showModal();
+
+        }
+
+        function saveProduct() {
+            document.getElementById("editProductMessage").style.display = "block";
+            setTimeout(()=>{
+                document.getElementById("editProductMessage").style.display = "none";
+                document.getElementById("editProductDialog").close();
+            }, 3000);
+        }
 
         function showProducts(products) {
             const tbody = document.querySelector("#productsTable tbody");
@@ -27,14 +132,16 @@
                     <td>${product.price}</td>
                     <td>${product.isActive ? "✅" : "❌"}</td>
                     <td>
-                        <span>
-                            <button style="background-color: white; border: 1px solid #ccc; padding: 3px 10px;">✎</button>
-                        </span>
-                        <span>
-                            <button style="background-color: white; border: 1px solid #ccc; padding: 3px 10px;">❌</button>
-                        </span>
+                        <div class="action-buttons">
+                            <button class="btn-edit" style="background-color: white; border: 1px solid #ccc; padding: 3px 10px;">✎</button>
+                            <button class="btn-delete" style="background-color: white; border: 1px solid #ccc; padding: 3px 10px;">❌</button>
+                        </div>
                     </td>
-                `
+                `;
+                
+                const btnEdit = row.querySelector(".btn-edit");
+                btnEdit.addEventListener("click", ()=>showEditDialog(product.product_id));
+
                 tbody.appendChild(row);
             }
         }
@@ -51,9 +158,17 @@
             showProducts(filteredProducts);
         }
 
-        window.onload = ()=> {
+        window.onload = () => {
+            //editProduct(10);
             showProducts(allProducts);
-            document.getElementById("productName").onkeyup = ()=> filterProducts();
+            document.getElementById("productName").onkeyup = () => filterProducts();
+            const dialog = document.getElementById("editProductDialog");
+            document.getElementById("btnCloseEditDialog").addEventListener("click", () => dialog.close());
+            //document.getElementById("btnSaveProduct").addEventListener("click", ()=>saveProduct());
+            document.getElementById("editProductForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+                saveProduct();
+            });
         }
     </script>
 
@@ -79,6 +194,39 @@
         </tbody>
     </table>
 
+    <dialog id="editProductDialog">
+        <h2>Edit Product</h2>
+        <form id="editProductForm">
+            <div class="form-group">
+                <label for="product_id">Product ID</label>
+                <input type="text" id="product_id" readonly>
+            </div>
+    
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" id="category">
+            </div>
+    
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" id="price">
+            </div>
+    
+            <div class="form-actions">
+                <button type="submit" id="btnSaveProduct">Save</button>
+                <button type="button" id="btnCloseEditDialog">Close</button>
+            </div>
+    
+            <div class="message" id="editProductMessage" style="display: none;">
+                Product updated successfully
+            </div>
+        </form>
+    </dialog>
 
 </body>
 
