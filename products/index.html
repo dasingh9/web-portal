@@ -98,6 +98,9 @@
     <script type="module">
         import { getAllProducts } from "./products-service.js";
         const allProducts = getAllProducts();
+        let categories = allProducts.map(product => product.category);
+        categories = Array.from(new Set(categories));
+        categories = categories.sort();
 
         function showEditDialog(product_id) {
             //console.log(product_id);
@@ -158,6 +161,13 @@
             showProducts(filteredProducts);
         }
 
+        function loadCategoriesDropdown(categories) {
+            document.getElementById("categories").innerHTML = categories.map(catName => `<option>${catName}</option>`).join("\n");
+            /*const dropdown = document.getElementById("categories");
+            const options = categories.map(catName => `<option>${catName}</option>`);
+            dropdown.innerHTML = options.join("");*/
+        }
+
         window.onload = () => {
             //editProduct(10);
             showProducts(allProducts);
@@ -169,6 +179,8 @@
                 event.preventDefault();
                 saveProduct();
             });
+
+            loadCategoriesDropdown(categories);
         }
     </script>
 
@@ -178,7 +190,10 @@
 <body>
     <div class="filters">
         <input type="text" id="productName" placeholder="Product name">
+        <select name="categories" id="categories">
+        </select>
     </div>
+
     <table id="productsTable">
         <thead>
             <tr>
