@@ -8,7 +8,7 @@ class Person {
     }
 
     getFullName() {
-        return this.firstName + " " + this.lastName();
+        return this.firstName + " " + this.lastName;
     }
 }
 
@@ -31,5 +31,12 @@ class Customer extends Person {
 const emp1 = new Employee("Dav", "S", "0123456789", "dav@emample.com", "Accounts", 90000);
 const customer1 = new Customer("Peter", "Kelly", "0236456789", "peter@emample.com", "C101", "11 Hill Road, Christchurch");
 
+console.log("-------------------------------------------------------");
+console.log(`${emp1.getFullName()} works in ${emp1.dept} department`);
+console.log("-------------------------------------------------------");
+console.log(`Customer: ${customer1.getFullName()}, Delivery Address: ${customer1.deliveryAddress}`);
+console.log("-------------------------------------------------------");
 console.log(emp1);
+console.log("-------------------------------------------------------");
 console.log(customer1);
+console.log("-------------------------------------------------------");
