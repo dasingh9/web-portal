@@ -32,6 +32,14 @@ classDiagram
     Person <|-- Customer
 ```
 
+## Running the Code
+
+Run the file using Node.js:
+
+```bash
+node person.js
+```
+
 ## Example Output
 
 ```
@@ -44,12 +52,4 @@ Employee { firstName: 'John', lastName: 'Doe', phoneNumber: '0123456789', email:
 -------------------------------------------------------
 Customer { firstName: 'Peter', lastName: 'Kelly', phoneNumber: '0236456789', email: 'peter@example.com', cusomerId: 'C101', deliveryAddress: '11 Hill Road, Christchurch' }
 -------------------------------------------------------
-```
-
-## Running the Code
-
-Run the file using Node.js:
-
-```bash
-node person.js
 ```
