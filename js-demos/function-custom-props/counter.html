@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robot Screen Example</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4e1d4; /* soft background */
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .screen-wrapper {
+            position: relative;
+            display: inline-block;
+            font-size: 120px;
+            line-height: 1;
+        }
+
+        .screen-emoji {
+            user-select: none;
+            pointer-events: none;
+            font-size: 15rem;
+        }
+
+        .screen-text {
+            position: absolute;
+            top: 38%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: yellow;
+            font-weight: bold;
+            text-shadow: 1px 1px 4px black;
+            white-space: nowrap;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 12px 24px;
+            font-size: 4rem; /* make emoji big */
+            cursor: pointer;
+            border: none;
+            /*background-color: #f5f3cc;*/
+            color: #fff;
+            border-radius: 12px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c3f1f5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="screen-wrapper">
+            <div class="screen-emoji">🖥️</div>
+            <div class="screen-text" id="robotScreen">Hi x 0</div>
+        </div>
+
+        <div style="color: black;">
+            <p>Each time the robot sees a person, it says <strong>"Hi"</strong> and updates the screen with the number of greetings so far.</p>
+            <p>Click Robot face to see it in action</p>
+        </div>
+
+        <div>
+            <button onclick="robotSeesPerson()">🤖</button>
+        </div>
+
+
+    </div>
+
+    <script>
+        // Function with counter property
+        function sayHi() {
+            console.log('Hi');
+            sayHi.counter = sayHi.counter + 5;
+            sayHi.lastGreetingTime = new Date();
+        }
+
+        // Initialize the counter
+        sayHi.counter = 0;
+
+        // Update the screen when robot sees a person
+        function robotSeesPerson() {
+            sayHi();
+            document.getElementById('robotScreen').textContent = `Hi x ${sayHi.counter}`;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Closure Example: Dynamic Headings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        .output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Closure Example: Create Headings Dynamically</h2>
+
+    <button onclick="addElement('h1', 'This is an H1 heading')">Add H1</button>
+    <button onclick="addElement('h2', 'This is an H2 heading')">Add H2</button>
+
+    <div class="output" id="outputArea"></div>
+
+    <script>
+        // Closure function factory
+        function makeHeading(hTag) {
+            return function (title) {
+                return `<${hTag}>${title}</${hTag}>`;
+            };
+        }
+
+        // Create two separate closure instances
+        const createH1 = makeHeading('h1');
+        const createH2 = makeHeading('h2');
+
+        document.getElementById('outputArea').innerHTML += createH1("Hello World");
+        document.getElementById('outputArea').innerHTML += createH2("Hello World");
+
+        // Function to add the generated HTML element to the page
+        function addElement(type, text) {
+            const outputArea = document.getElementById('outputArea');
+            let elementHTML;
+
+            switch (type) {
+                case 'h1':
+                    elementHTML = createH1(text);
+                    break;
+                case 'h2':
+                    elementHTML = createH2(text);
+                    break;
+                default:
+                    console.warn('Unknown element type:', type);
+                    elementHTML = `<p>${text}</p>`; // fallback
+            }
+
+            outputArea.innerHTML += elementHTML;
+        }
+
+        // Also log examples in the console
+        console.log(createH1('Console H1 Example'));
+        console.log(createH2('Console H2 Example'));
+    </script>
+
+</body>
+
+</html>
