@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>🚀 SpaceX Rocket Launches</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #66fcf1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1f2833;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #45a29e;
+            text-align: center;
+        }
+
+        th {
+            background-color: #45a29e;
+            color: #0b0c10;
+        }
+
+        button {
+            padding: 6px 12px;
+            background-color: #66fcf1;
+            color: #0b0c10;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #45a29e;
+        }
+
+        .rocket {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            font-size: 50px;
+            transform: rotate(-45deg);
+            /* Rotate rocket upright */
+            animation: launch 3s forwards;
+            z-index: 1000;
+        }
+
+        @keyframes launch {
+            0% {
+                bottom: -100px;
+            }
+
+            100% {
+                bottom: 110%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🚀 SpaceX Launches</h1>
+    <table id="launchesTable">
+        <thead>
+            <tr>
+                <th>Flight #</th>
+                <th>Mission Name</th>
+                <th>Launch Year</th>
+                <th>Rocket Name</th>
+                <th>Launch Site</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="ui/rocket-launcher.js"></script>
+    <script src="models/launch.js"></script>
+    <script src="dao/launch-dao.js"></script>
+
+    <script>
+        function populateTable(launches) {
+            const tbody = document.querySelector('#launchesTable tbody');
+            tbody.innerHTML = ''; // clear existing rows
+
+            const rocketLauncher = new RocketLauncher();
+            launches.forEach(launch => {
+                const row = document.createElement('tr');
+
+                const button = document.createElement('button');
+                button.textContent = 'Launch 🚀';
+                button.addEventListener('click', () => {
+                    rocketLauncher.launchRocket(launch.site_name);
+                });
+
+                row.innerHTML = `
+                    <td>${launch.flight_number}</td>
+                    <td>${launch.mission_name}</td>
+                    <td>${launch.launch_year}</td>
+                    <td>${launch.rocket_name}</td>
+                    <td>${launch.site_name}</td>
+                `;
+
+                const actionCell = document.createElement('td');
+                actionCell.appendChild(button);
+                row.appendChild(actionCell);
+                tbody.appendChild(row);
+            });
+        }
+
+
+        //import { LaunchDao } from "dao/launch-dao.js";
+        // Start fetching when the page has loaded
+        window.onload = async () => {
+            const launchDao = new LaunchDao();
+            const launches = await launchDao.getLaunches();
+            populateTable(launches);
+        }
+    </script>
+</body>
+
+</html>
