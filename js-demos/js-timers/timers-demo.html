@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fun with setTimeout and setInterval</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #222;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: background-color 1s;
+        }
+
+        .advert {
+            position: absolute;
+            top: -200px; /* start off-screen */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff4081;
+            color: white;
+            padding: 50px 40px;
+            font-size: 24px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .advert.show {
+            top: 40%;
+            opacity: 1;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title">⏳ Wait for it... and enjoy the colors!</div>
+
+    <div class="advert" id="adBanner">
+        🤖 Limited Time Offer: Buy 1 Robot, Get 1 Free! 🤖
+    </div>
+
+    <script>
+        // setTimeout Example: Show the advert after 3 seconds
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const ad = document.getElementById('adBanner');
+                ad.classList.add('show');
+            }, 3000);
+        });
+
+        // setInterval Example: Change the background color every second
+        const colors = ['#e91e63', '#3f51b5', '#009688', '#ff5722', '#607d8b', '#4caf50'];
+        let index = 0;
+
+        setInterval(() => {
+            document.body.style.backgroundColor = colors[index];
+            index = (index + 1) % colors.length;
+        }, 1000);
+    </script>
+
+</body>
+</html>
