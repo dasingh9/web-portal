@@ -56,9 +56,8 @@
             bottom: -100px;
             left: 50%;
             font-size: 50px;
-            transform: rotate(-45deg);
-            /* Rotate rocket upright */
-            animation: launch 3s forwards;
+            transform: rotate(-45deg); /* Rotate rocket upright */
+            animation: launch 10s forwards;
             z-index: 1000;
         }
 
@@ -76,6 +75,8 @@
 
 <body>
     <h1>🚀 SpaceX Launches</h1>
+    <div id="errorMessages" class="error">
+    </div>
     <table id="launchesTable">
         <thead>
             <tr>
@@ -93,23 +94,24 @@
     <script src="ui/rocket-launcher.js"></script>
     <script src="models/launch.js"></script>
     <script src="dao/launch-dao.js"></script>
+    <script src="errors/custom-error.js"></script>
 
     <script>
         function populateTable(launches) {
-            const tbody = document.querySelector('#launchesTable tbody');
-            tbody.innerHTML = ''; // clear existing rows
+            try {
+                const tbody = document.querySelector('#launchesTable tbody');
+                tbody.innerHTML = ''; // clear existing rows
+                const rocketLauncher = new RocketLauncher();
+                launches.forEach(launch => {
+                    const row = document.createElement('tr');
 
-            const rocketLauncher = new RocketLauncher();
-            launches.forEach(launch => {
-                const row = document.createElement('tr');
+                    const button = document.createElement('button');
+                    button.textContent = 'Launch 🚀';
+                    button.addEventListener('click', () => {
+                        rocketLauncher.launchRocket(launch.site_name);
+                    });
 
-                const button = document.createElement('button');
-                button.textContent = 'Launch 🚀';
-                button.addEventListener('click', () => {
-                    rocketLauncher.launchRocket(launch.site_name);
-                });
-
-                row.innerHTML = `
+                    row.innerHTML = `
                     <td>${launch.flight_number}</td>
                     <td>${launch.mission_name}</td>
                     <td>${launch.launch_year}</td>
@@ -117,11 +119,16 @@
                     <td>${launch.site_name}</td>
                 `;
 
-                const actionCell = document.createElement('td');
-                actionCell.appendChild(button);
-                row.appendChild(actionCell);
-                tbody.appendChild(row);
-            });
+                    const actionCell = document.createElement('td');
+                    actionCell.appendChild(button);
+                    row.appendChild(actionCell);
+                    tbody.appendChild(row);
+                });
+            }
+            catch (error) {
+                console.log(error.message);
+                throw new Error(`Failed to display the rockets`);
+            }
         }
 
 
@@ -129,8 +136,21 @@
         // Start fetching when the page has loaded
         window.onload = async () => {
             const launchDao = new LaunchDao();
-            const launches = await launchDao.getLaunches();
-            populateTable(launches);
+            try {
+                const launches = await launchDao.getLaunches();
+                populateTable(launches);
+            }
+            catch (error) {
+                if(error instanceof FetchLaunchError)
+                    document.getElementById("errorMessages").innerText = error.message;
+                else
+                    document.getElementById("errorMessages").innerText = 'Unable to load. Please try again later!';
+            }
+
+            setInterval(() => {
+                const rocketLauncher = new RocketLauncher();
+                rocketLauncher.launchRocket("no-site");
+            }, 400);
         }
     </script>
 </body>

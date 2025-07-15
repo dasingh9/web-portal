@@ -2,11 +2,17 @@
 
 class LaunchDao {
     async getLaunches() {
-        const response = await fetch(`https://api.spacexdata.com/v3/launches`);
-        const launchesData = await response.json();
+        try {
+            const response = await fetch(`https://api.spacexdata.com/v3/launches`);
+            const launchesData = await response.json();
 
-        const launches = this.transformSpacexResponseToLaunch(launchesData);
-        return launches;
+            const launches = this.transformSpacexResponseToLaunch(launchesData);
+            return launches;
+        }
+        catch (error) {
+            console.error(`Unable to fetch data from Server`);
+            throw new FetchLaunchError(`Unable to fetch data from Server`);
+        }
     }
 
     transformSpacexResponseToLaunch(spacexLaunches) {
