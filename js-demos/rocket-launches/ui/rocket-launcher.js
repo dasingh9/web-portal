@@ -14,10 +14,16 @@ class RocketLauncher {
 
         document.body.appendChild(rocket);
 
+        rocket.addEventListener("click", ()=>{
+            rocket.textContent = '🔥';
+            rocket.style.animationPlayState = 'paused';
+        });
+
+
         rocket.addEventListener('animationend', () => {
             rocket.remove();
         });
-        console.log(`Launch Site: ${launchSite}`);
-        console.log(`Number of Launches: ${this.counter}`);
+        //console.log(`Launch Site: ${launchSite}`);
+        //console.log(`Number of Launches: ${this.counter}`);
     }
 }
