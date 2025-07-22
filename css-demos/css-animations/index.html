@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animations</title>
+
+    <style>
+        #iframe-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        #iframe-container iframe {
+            width: 30%;
+            height: 45vh;
+            border: none;
+            /* Removes the 3D border */
+            outline: none;
+            /* Removes any focus outline */
+            box-shadow: none;
+            /* Removes any shadow effect */
+        }
+
+
+    </style>
+
+</head>
+<body>
+    
+    <div id="iframe-container">
+        <iframe id="contentIframe" src="bouncing-ball.html"></iframe>
+        <iframe id="contentIframe" src="color-changing.html"></iframe>
+        <iframe id="contentIframe" src="mini-game.html"></iframe>
+        <iframe id="contentIframe" src="slide-down-ad.html"></iframe>
+        <iframe id="contentIframe" src="images-slideshow.html"></iframe>
+    </div>
+
+</body>
+</html>
