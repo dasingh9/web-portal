@@ -39,6 +39,9 @@
                     <li class="menu-home"><a href="/">Home</a></li>
                     <li><a title="Rocket Launcher" href="javascript:changeIframeUrl('js-demos/rocket-launches/')">Rocket Launches</a></li>
                     <li><a class="menu-products" title="Products" href="javascript:changeIframeUrl('products/index.html')">Products</a></li>
+                    <li><a class="menu-products" title="Products" href="javascript:changeIframeUrl('js-demos/charts/')">Charts</a></li>
+                    <li><a class="menu-products" title="Products" href="javascript:changeIframeUrl('css-demos/css-animations/')">CSS Animations</a></li>
+                    <li><a class="menu-products" title="Products" href="javascript:changeIframeUrl('css-demos/fonts-and-icons/')">Fonts & Icons</a></li>
                     <li><a href="javascript:changeIframeUrl('html-demos/learn-html.html')">Learn HTML</a></li>
                     <li><a href="javascript:changeIframeUrl('html-demos/meta-tags.html')">HTML Meta Tags</a></li>
                     <li><a href="javascript:changeIframeUrl('html-demos/responsive.html')">Media Queries</a></li>
@@ -143,6 +146,10 @@
 
             window.addEventListener('load', handleResize);
             window.addEventListener('resize', handleResize);
+
+            window.onload = ()=> {
+                changeIframeUrl('js-demos/charts/index.html')
+            }
 
         </script>
 

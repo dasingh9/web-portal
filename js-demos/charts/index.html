@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCharts</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+</head>
+
+<body>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+        <div id="chart-category-count" style="width: 450px; height: 350px;"></div>
+        <div id="chart-category-pie" style="width: 450px; height: 350px;"></div>
+        <div id="chart-avg-price" style="width: 450px; height: 350px;"></div>
+        <div id="chart-rating-range" style="width: 450px; height: 350px;"></div>
+        <div id="chart-price-dist" style="width: 450px; height: 350px;"></div>
+        <div id="chart-price-rating" style="width: 450px; height: 350px;"></div>
+    </div>
+    <script type="text/javascript">
+        // Chart instances
+        const chartCategoryCount = echarts.init(document.getElementById('chart-category-count'));
+        const chartCategoryPie = echarts.init(document.getElementById('chart-category-pie'));
+        const chartAvgPrice = echarts.init(document.getElementById('chart-avg-price'));
+        const chartRatingRange = echarts.init(document.getElementById('chart-rating-range'));
+        const chartPriceDist = echarts.init(document.getElementById('chart-price-dist'));
+        const chartPriceRating = echarts.init(document.getElementById('chart-price-rating'));
+
+        // Helpers
+        function getRatingRangeLabel(rate) {
+            if (rate < 2) return '0-2';
+            if (rate < 3) return '2-3';
+            if (rate < 4) return '3-4';
+            return '4-5';
+        }
+        function getPriceBinLabel(price) {
+            if (price < 25) return '<$25';
+            if (price < 50) return '$25-50';
+            if (price < 100) return '$50-100';
+            return '$100+';
+        }
+
+        // Chart option builders
+        function getCategoryCountOption(categories, counts) {
+            return {
+                title: { text: 'Product Count by Category' },
+                xAxis: { data: categories },
+                yAxis: {},
+                series: [{ name: '# products', type: 'bar', data: counts }]
+            };
+        }
+        function getCategoryPieOption(categories, counts) {
+            return {
+                title: { text: 'Product Count by Category (Pie)' },
+                tooltip: { trigger: 'item' },
+                legend: { orient: 'vertical', left: 'left' },
+                series: [{
+                    name: 'Products',
+                    type: 'pie',
+                    radius: '60%',
+                    data: categories.map((cat, i) => ({ value: counts[i], name: cat })),
+                    emphasis: {
+                        itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0,0,0,0.5)' }
+                    }
+                }]
+            };
+        }
+        function getAvgPriceOption(categories, avgPrices) {
+            return {
+                title: { text: 'Average Price per Category' },
+                xAxis: { data: categories },
+                yAxis: {},
+                series: [{ name: 'Avg Price', type: 'bar', data: avgPrices }]
+            };
+        }
+        function getRatingRangeOption(ratingRanges, ratingCounts) {
+            return {
+                title: { text: 'Product Count by Rating Range' },
+                xAxis: { data: ratingRanges },
+                yAxis: {},
+                series: [{ name: '# products', type: 'bar', data: ratingRanges.map(r => ratingCounts[r]) }]
+            };
+        }
+        function getPriceDistOption(priceBins, priceBinCounts) {
+            return {
+                title: { text: 'Product Price Distribution' },
+                xAxis: { data: priceBins },
+                yAxis: {},
+                series: [{ name: '# products', type: 'bar', data: priceBins.map(b => priceBinCounts[b]) }]
+            };
+        }
+        function getPriceRatingOption(scatterData) {
+            return {
+                title: { text: 'Price vs. Rating' },
+                xAxis: { name: 'Price', type: 'value' },
+                yAxis: { name: 'Rating', type: 'value', min: 0, max: 5 },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function(params) {
+                        return `<b>${params.data[2]}</b><br>Price: $${params.data[0]}<br>Rating: ${params.data[1]}`;
+                    }
+                },
+                series: [{
+                    name: 'Product',
+                    type: 'scatter',
+                    data: scatterData,
+                    symbolSize: 12
+                }]
+            };
+        }
+
+        // Data processing
+        function processData(products) {
+            // Category counts
+            const categoryCounts = {};
+            products.forEach(p => {
+                categoryCounts[p.category] = (categoryCounts[p.category] || 0) + 1;
+            });
+            const categories = Object.keys(categoryCounts);
+            const counts = categories.map(cat => categoryCounts[cat]);
+
+            // Average price per category
+            const priceSums = {}, priceCounts = {};
+            products.forEach(p => {
+                priceSums[p.category] = (priceSums[p.category] || 0) + p.price;
+                priceCounts[p.category] = (priceCounts[p.category] || 0) + 1;
+            });
+            const avgPrices = categories.map(cat => (priceSums[cat] / priceCounts[cat]).toFixed(2));
+
+            // Rating range counts
+            const ratingRanges = ['0-2', '2-3', '3-4', '4-5'];
+            const ratingCounts = { '0-2': 0, '2-3': 0, '3-4': 0, '4-5': 0 };
+            products.forEach(p => {
+                const label = getRatingRangeLabel(p.rating.rate);
+                ratingCounts[label]++;
+            });
+
+            // Price distribution
+            const priceBins = ['<$25', '$25-50', '$50-100', '$100+'];
+            const priceBinCounts = { '<$25': 0, '$25-50': 0, '$50-100': 0, '$100+': 0 };
+            products.forEach(p => {
+                const label = getPriceBinLabel(p.price);
+                priceBinCounts[label]++;
+            });
+
+            // Price vs Rating scatter
+            const scatterData = products.map(p => [p.price, p.rating.rate, p.title]);
+
+            return {
+                categories, counts, avgPrices, ratingRanges, ratingCounts, priceBins, priceBinCounts, scatterData
+            };
+        }
+
+        // Main dashboard update
+        function updateDashboard(products) {
+            const data = processData(products);
+            chartCategoryCount.setOption(getCategoryCountOption(data.categories, data.counts));
+            chartCategoryPie.setOption(getCategoryPieOption(data.categories, data.counts));
+            chartAvgPrice.setOption(getAvgPriceOption(data.categories, data.avgPrices));
+            chartRatingRange.setOption(getRatingRangeOption(data.ratingRanges, data.ratingCounts));
+            chartPriceDist.setOption(getPriceDistOption(data.priceBins, data.priceBinCounts));
+            chartPriceRating.setOption(getPriceRatingOption(data.scatterData));
+        }
+
+        // Fetch products and update dashboard
+        function fetchAndRenderDashboard() {
+            fetch('https://fakestoreapi.com/products')
+                .then((response) => response.json())
+                .then((json) => {
+                    updateDashboard(json);
+                })
+                .catch(err => {
+                    console.error('Failed to fetch products:', err);
+                });
+        }
+        fetchAndRenderDashboard();
+    </script>
+</body>
+
+</html>
