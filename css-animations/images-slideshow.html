@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Slideshow</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    .slide {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: fade 12s infinite;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+      text-align: center;
+      z-index: 2;
+    }
+
+    .hero-text h1 {
+      font-size: 3em;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0; }
+      8% { opacity: 1; }
+      30% { opacity: 1; }
+      38% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="slideshow" id="slideshow"></div>
+
+    <div class="hero-text">
+      <h1>Dynamic Slideshow</h1>
+      <p>100% customizable</p>
+    </div>
+  </div>
+
+  <script>
+    const imageUrls = [
+      'https://images.unsplash.com/photo-1575824023361-c593d29eecd1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1549182209-fccf0dd0893b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1538099184261-05cda0e86e2c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1532343158747-f777340f4b12?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    ];
+
+    const slideshow = document.getElementById('slideshow');
+
+    imageUrls.forEach((url, index) => {
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+      slide.style.backgroundImage = `url(${url})`;
+      slide.style.animationDelay = `${index * 4}s`; // cycle every 4 seconds
+      slideshow.appendChild(slide);
+    });
+  </script>
+
+</body>
+</html>
