@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Color Changing Box</title>
+  <style>
+    .color-box {
+      width: 150px;
+      height: 150px;
+      margin: 100px auto;
+      background-color: red;
+      animation: changeColor 1s infinite;
+    }
+
+    @keyframes changeColor {
+      0% { background-color: red; }
+      25% { background-color: blue; }
+      50% { background-color: green; }
+      75% { background-color: purple; }
+      100% { background-color: red; }
+    }
+  </style>
+</head>
+<body>
+  <div class="color-box"></div>
+</body>
+</html>
