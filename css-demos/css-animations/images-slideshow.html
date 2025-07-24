@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Dynamic Slideshow</title>
   <style>
-    body, html {
+    body,
+    html {
       margin: 0;
       padding: 0;
       height: 100%;
@@ -53,18 +55,58 @@
     }
 
     @keyframes fade {
-      0% { opacity: 0; }
-      8% { opacity: 1; }
-      30% { opacity: 1; }
-      38% { opacity: 0; }
-      100% { opacity: 0; }
+      0% {
+        opacity: 0;
+      }
+
+      8% {
+        opacity: 1;
+      }
+
+      30% {
+        opacity: 1;
+      }
+
+      38% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .image-first {
+      animation-delay: 0s;
+    }
+
+    .image-second {
+      animation-delay: 4s;
     }
   </style>
 </head>
+
 <body>
 
   <div class="hero">
-    <div class="slideshow" id="slideshow"></div>
+    <div class="slideshow" id="slideshow">
+
+
+        <div class="slide" class="image-first"
+          style="background-image: url(&quot;https://images.unsplash.com/photo-1575824023361-c593d29eecd1?q=80&amp;w=1170&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&quot;);">
+        </div>
+        <div class="slide"  class="image-second"
+          style="background-image: url(&quot;https://images.unsplash.com/photo-1549182209-fccf0dd0893b?q=80&amp;w=1170&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&quot;);">
+        </div>
+        <div class="slide"
+          style="background-image: url(&quot;https://images.unsplash.com/photo-1538099184261-05cda0e86e2c?q=80&amp;w=1170&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&quot;); animation-delay: 8s;">
+        </div>
+        <div class="slide"
+          style="background-image: url(&quot;https://images.unsplash.com/photo-1532343158747-f777340f4b12?q=80&amp;w=1170&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&quot;); animation-delay: 12s;">
+        </div>
+
+
+    </div>
 
     <div class="hero-text">
       <!--h1>Dynamic Slideshow</h1>
@@ -73,7 +115,7 @@
   </div>
 
   <script>
-    const imageUrls = [
+    /*const imageUrls = [
       'https://images.unsplash.com/photo-1575824023361-c593d29eecd1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       'https://images.unsplash.com/photo-1549182209-fccf0dd0893b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       'https://images.unsplash.com/photo-1538099184261-05cda0e86e2c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -88,8 +130,9 @@
       slide.style.backgroundImage = `url(${url})`;
       slide.style.animationDelay = `${index * 4}s`; // cycle every 4 seconds
       slideshow.appendChild(slide);
-    });
+    })*/
   </script>
 
 </body>
+
 </html>

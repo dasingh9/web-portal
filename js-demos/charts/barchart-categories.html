@@ -39,6 +39,11 @@
             });
             const categories = Object.keys(categoryCounts);
             const counts = categories.map(cat => categoryCounts[cat]);
+
+            console.log(categories);
+            console.log(counts);
+            
+
             options.xAxis.data = categories;
             options.series[0].data = counts;
             myChart.setOption(options);
