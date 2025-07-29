@@ -42,6 +42,8 @@ export class ProductDao {
 
   async updateProduct(id, updatedData) {
     const products = await this._readFile();
+    console.log(`id:${id}`);
+    console.log(JSON.stringify(products));
     const index = products.findIndex(p => p.product_id === id);
     if (index === -1) throw new Error('Product not found');
     products[index] = { ...products[index], ...updatedData };
